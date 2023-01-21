@@ -8,9 +8,9 @@ module.exports = {
     extend: {
       colors:{
         border: "#ECEDF1",
-        buttonFill: "#F5F6FA",
-        listFill: "#F0F2F6",
-        textGray: "#787A88",
+        btn: "#F5F6FA",
+        list: "#F0F2F6",
+        "text-gray": "#787A88",
         blue: "#081EF4",
         dot: "#1900ff",
         lightdot: "#cdd0ff"
