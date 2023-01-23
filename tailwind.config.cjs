@@ -17,5 +17,5 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: ["postcss-100vh-fix"],
 }
