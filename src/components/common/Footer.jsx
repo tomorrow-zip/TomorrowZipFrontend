@@ -77,7 +77,7 @@ const Footer = () => {
     const [input, setInput] = useState(0)
 
     return (
-        <footer className="w-full flex justify-between items-center px-5 pb-10 bg-gradient-to-t [background:linear-gradient(transparent,10%,white)]">
+        <footer className="sticky bottom-0 w-full flex justify-between items-center px-5 pt-3 pb-10 bg-gradient-to-t [background:linear-gradient(to_bottom,transparent_0%,white_20%)]">
             <button className="w-10 h-10 flex justify-center items-center">
                 <div className="w-8 h-8 z-10 flex justify-center items-center">
                     <Back />

@@ -1,37 +1,37 @@
-import { useState } from "react"
-import reactLogo from "./assets/react.svg"
 import "./App.css"
-
+import bed from "./assets/icon/button/bed.png"
+import Adot from "./assets/img/img.png"
+import AdotChat from "./components/common/AdotChat.jsx"
+import Footer from "./components/common/Footer.jsx"
+import Header from "./components/common/Header.jsx"
+// import ListContainer from "./components/common/ListContainer.jsx"
+import Button from "./components/main/Button.jsx"
 function App() {
-    const [count, setCount] = useState(0)
     return (
-        <div className="App">
-            <div>
-                <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                    <img src="/vite.svg" className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://reactjs.org" target="_blank" rel="noreferrer">
+        <main className="h-full min-h-screen flex flex-col">
+            <Header />
+            <div className="overflow-y-scroll flex-1 flex flex-col ">
+                {/*<div className="h-14"></div>*/}
+                <div className="py-4">
+                    <AdotChat>
+                        안녕하세요. SKT FLY AI 내일의 집의 에이닷입니다.
+                    </AdotChat>
+                </div>
+                <div className="flex-1 ">
                     <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
+                        src={Adot}
+                        className="transition duration-300 h-80 scale-100 mx-auto"
+                        // style={{ height: "auto" }}
                     />
-                </a>
+                </div>
+                <div className="flex justify-center px-5 py-2.5">
+                    <Button icon={bed}>가구 추천해줘</Button>
+                </div>
             </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-        </div>
+            {/*<ListContainer>음음음음음음음음음음음음</ListContainer>*/}
+            <div className="h-24"></div>
+            <Footer />
+        </main>
     )
 }
 

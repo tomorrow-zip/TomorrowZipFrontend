@@ -61,7 +61,7 @@ const ShareIcon = (props) => (
 )
 const Header = () => {
     return (
-        <header className="sticky top-0 px-[1.125rem] py-4 flex justify-between">
+        <header className="sticky top-0 px-[1.125rem] py-4 flex justify-between bg-white">
             <button className="w-6 h-6 flex justify-center items-center">
                 <div className="w-6 h-6 z-10 flex justify-center items-center">
                     <MenuIcon />
