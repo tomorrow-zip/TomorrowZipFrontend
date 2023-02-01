@@ -4,7 +4,7 @@ const Button = ({ children, className, onClick, icon }) => {
             className={
                 `flex flex-row justify-between gap-2.5
                 bg-btn border border-border
-                rounded-full px-4 py-2.5 ` + className
+                rounded-full px-4 py-2.5 whitespace-nowrap ` + className
             }
             onClick={onClick}
         >
@@ -13,7 +13,7 @@ const Button = ({ children, className, onClick, icon }) => {
                     <img src={icon} alt="icon" />
                 </div>
             )}
-            <div className="font-medium">{children}</div>
+            <div className="font-medium select-none">{children}</div>
         </button>
     )
 }
