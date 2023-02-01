@@ -14,8 +14,11 @@ module.exports = {
         blue: "#081EF4",
         dot: "#1900ff",
         lightdot: "#cdd0ff"
+      },
+      animation: {
+        'loading': 'spin 1.5s linear infinite',
       }
     },
   },
-  plugins: ["postcss-100vh-fix"],
+  plugins: ["postcss-100vh-fix",require("tailwind-scrollbar-hide")],
 }
