@@ -16,11 +16,11 @@ const ChevronIcon = (props) => (
     </svg>
 )
 
-const ListContainer = ({ children, detail = false }) => {
+const ListContainer = ({ children, button = false }) => {
     return (
         <div className="bg-list rounded-xl overflow-hidden">
-            <div className="px-5 py-4">{children}</div>
-            {detail && (
+            <div>{children}</div>
+            {button && (
                 <button className="w-full border-t border-border px-5 py-3 text-center flex justify-center items-center gap-2.5">
                     <span className="text-sm">자세히 살펴보기</span>
                     <ChevronIcon />
