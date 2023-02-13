@@ -61,19 +61,19 @@ const ShareIcon = (props) => (
 )
 const Header = () => {
     return (
-        <header className="sticky top-0 px-[1.125rem] py-4 flex justify-between bg-white">
-            <button className="w-6 h-6 flex justify-center items-center">
+        <header className="absolute top-0 w-full px-[1.125rem] py-4 flex justify-between">
+            <button className="w-6 h-6 flex justify-center items-center rounded">
                 <div className="w-6 h-6 z-10 flex justify-center items-center">
                     <MenuIcon />
                 </div>
             </button>
             <div className="flex gap-5">
-                <button className="w-6 h-6 flex justify-center items-center">
+                <button className="w-6 h-6 flex justify-center items-center rounded">
                     <div className="w-6 h-6 z-10 flex justify-center items-center">
                         <ShareIcon />
                     </div>
                 </button>
-                <button className="w-6 h-6 flex justify-center items-center">
+                <button className="w-6 h-6 flex justify-center items-center rounded">
                     <div className="w-6 h-6 z-10 flex justify-center items-center">
                         <NotificationIcon />
                     </div>
