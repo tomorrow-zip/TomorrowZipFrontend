@@ -1,4 +1,6 @@
 import { useRef, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { routes } from "../../router/router.jsx"
 
 const MicrophoneIcon = (props) => (
     <svg
@@ -75,14 +77,25 @@ const Refresh = (props) => (
 const Footer = () => {
     const refreshRef = useRef(null)
     const [input, setInput] = useState(0)
+    const navigate = useNavigate()
+    const route = useLocation()
 
     return (
-        <footer className="sticky bottom-0 w-full flex justify-between items-center px-5 pt-3 pb-10 bg-gradient-to-t [background:linear-gradient(to_bottom,transparent_0%,white_20%)]">
-            <button className="w-10 h-10 flex justify-center items-center">
-                <div className="w-8 h-8 z-10 flex justify-center items-center">
-                    <Back />
-                </div>
-            </button>
+        <footer className="absolute bottom-0 w-full flex justify-between items-center px-5 pt-3 pb-10 bg-gradient-to-t [background:linear-gradient(to_bottom,transparent_0%,white_20%)]">
+            <div className="w-10 h-10">
+                {route.pathname !== "/" && route.pathname !== "/analysis" && (
+                    <button
+                        className="w-10 h-10 flex justify-center items-center"
+                        onClick={() => {
+                            navigate(-1)
+                        }}
+                    >
+                        <div className="w-8 h-8 z-10 flex justify-center items-center">
+                            <Back />
+                        </div>
+                    </button>
+                )}
+            </div>
             <div className="flex-1 flex justify-center items-center">
                 <div className="flex gap-6 justify-evenly rounded-full px-4 py-3 bg-white drop-shadow-[0_0_1.5rem_rgba(0,0,0,0.2)] relative">
                     <div
@@ -90,8 +103,8 @@ const Footer = () => {
                             input === 0 ? "-translate-x-7" : "translate-x-7"
                         }`}
                     ></div>
-                    <div
-                        className={`w-8 h-8 z-10 flex justify-center items-center transition duration-300 ${
+                    <button
+                        className={`w-8 h-8 z-10 flex justify-center items-center transition duration-300 rounded-full ${
                             input === 0 ? "text-white" : "text-blue"
                         }`}
                         onClick={() => {
@@ -99,9 +112,9 @@ const Footer = () => {
                         }}
                     >
                         <MicrophoneIcon />
-                    </div>
-                    <div
-                        className={`w-8 h-8 z-10 flex justify-center items-center transition duration-300 ${
+                    </button>
+                    <button
+                        className={`w-8 h-8 z-10 flex justify-center items-center transition duration-300 rounded-full ${
                             input === 1 ? "text-white" : "text-blue"
                         }`}
                         onClick={() => {
@@ -109,24 +122,26 @@ const Footer = () => {
                         }}
                     >
                         <KeyboardIcon />
-                    </div>
+                    </button>
                 </div>
             </div>
-            <button
-                className="w-10 h-10 rounded-full bg-white drop-shadow-[0_0_1.5rem_rgba(0,0,0,0.2)] flex justify-center items-center"
-                onClick={() => {
-                    refreshRef.current.className += "animate-spin"
-                    setTimeout(() => {
-                        refreshRef.current.className = ""
-                    }, 1000)
-                }}
-            >
-                <div className="w-8 h-8 z-10 flex justify-center items-center text-blue ">
-                    <div ref={refreshRef}>
-                        <Refresh />
+            <Link to={routes.home}>
+                <button
+                    className="w-10 h-10 rounded-full bg-white drop-shadow-[0_0_1.5rem_rgba(0,0,0,0.2)] flex justify-center items-center"
+                    onClick={() => {
+                        refreshRef.current.className += "animate-spin"
+                        setTimeout(() => {
+                            refreshRef.current.className = ""
+                        }, 1000)
+                    }}
+                >
+                    <div className="w-8 h-8 z-10 flex justify-center items-center text-blue">
+                        <div ref={refreshRef}>
+                            <Refresh />
+                        </div>
                     </div>
-                </div>
-            </button>
+                </button>
+            </Link>
         </footer>
     )
 }
