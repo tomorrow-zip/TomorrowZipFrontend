@@ -13,11 +13,20 @@ const SvgSpinner = (props) => (
     </svg>
 )
 
-const Spinner = () => {
+const Spinner = ({ loading }) => {
     return (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center bg-black bg-opacity-10 w-20 h-20 rounded-[1.75rem]">
-            <SvgSpinner className="animate-loading" role="status"></SvgSpinner>
-            <span className="hidden">Loading...</span>
+        <div
+            className={`absolute top-0 left-0 h-full min-h-screen w-full z-10 transition duration-300 select-none ${
+                !loading && "hidden"
+            }`}
+        >
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center bg-black bg-opacity-10 w-20 h-20 rounded-[1.75rem]">
+                <SvgSpinner
+                    className="animate-loading"
+                    role="status"
+                ></SvgSpinner>
+                <span className="hidden">Loading...</span>
+            </div>
         </div>
     )
 }
