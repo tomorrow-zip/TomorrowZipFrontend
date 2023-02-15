@@ -16,9 +16,9 @@ const ChevronIcon = (props) => (
     </svg>
 )
 
-const ListContainer = ({ children, button = false }) => {
+const ListContainer = ({ children, button = false, className }) => {
     return (
-        <div className="bg-list rounded-xl overflow-hidden">
+        <div className={`bg-list rounded-xl overflow-hidden ${className}`}>
             <div>{children}</div>
             {button && (
                 <button className="w-full border-t border-border px-5 py-3 text-center flex justify-center items-center gap-2.5">

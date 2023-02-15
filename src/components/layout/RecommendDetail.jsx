@@ -36,7 +36,7 @@ const ChevronRightIcon = (props) => (
 )
 const RecommendDetail = () => {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mx-4">
             <ListContainer>
                 <div className="p-3">
                     <h3 className="font-bold mb-1">플랫우드 무소음 벽시계</h3>

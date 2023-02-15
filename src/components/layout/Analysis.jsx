@@ -21,12 +21,13 @@ const ChevronIcon = (props) => (
 
 const Analysis = () => {
     return (
-        <div className="flex flex-col justify-between gap-2">
+        <div className="flex flex-col justify-between gap-2 mx-4">
             <ListContainer>
                 <div className="px-5 py-4">
                     <img
                         src={ExampleImg}
                         className="aspect-square object-center object-cover rounded-lg"
+                        alt="example"
                     />
                     <div className="mt-4">
                         <h3 className="text-lg font-bold">
@@ -58,18 +59,22 @@ const Analysis = () => {
                         <img
                             src={ExampleImg}
                             className="aspect-square object-center object-cover rounded-lg"
+                            alt="example"
                         />
                         <img
                             src={ExampleImg}
                             className="aspect-square object-center object-cover rounded-lg"
+                            alt="example"
                         />
                         <img
                             src={ExampleImg}
                             className="aspect-square object-center object-cover rounded-lg"
+                            alt="example"
                         />
                         <img
                             src={ExampleImg}
                             className="aspect-square object-center object-cover rounded-lg"
+                            alt="example"
                         />
                     </div>
                 </div>

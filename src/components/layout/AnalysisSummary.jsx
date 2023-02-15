@@ -3,7 +3,7 @@ import ListContainer from "../common/ListContainer.jsx"
 
 const AnalysisSummary = () => {
     return (
-        <ListContainer button>
+        <ListContainer button className="mx-4">
             <div className="flex justify-between items-center gap-2 px-5 py-4">
                 <div>
                     <h3 className="text-lg font-bold">집을 분석해봤어요!</h3>
@@ -24,6 +24,7 @@ const AnalysisSummary = () => {
                 <img
                     src={ExampleImg}
                     className="w-28 h-28 object-center object-cover rounded-lg"
+                    alt="example"
                 />
             </div>
         </ListContainer>

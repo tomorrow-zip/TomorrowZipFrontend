@@ -135,7 +135,7 @@ const Footer = () => {
                         }, 1000)
                     }}
                 >
-                    <div className="w-8 h-8 z-10 flex justify-center items-center text-blue">
+                    <div className="w-8 h-8 z-10 flex justify-center items-center text-blue rounded-full">
                         <div ref={refreshRef}>
                             <Refresh />
                         </div>

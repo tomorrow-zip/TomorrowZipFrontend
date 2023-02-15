@@ -1,11 +1,11 @@
-import bed from "../../assets/icon/button/bed.png"
+import recommend from "../../assets/icon/button/recommend/recommend.png"
 import Button from "./Button.jsx"
 
 const RecommendButton = ({ next }) => {
     return (
         <div className="flex justify-center items-center">
             <Button
-                icon={bed}
+                icon={recommend}
                 onClick={() => {
                     next()
                 }}
