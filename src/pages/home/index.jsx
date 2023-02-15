@@ -1,87 +1,49 @@
 import { useState } from "react"
-import bed from "../../assets/icon/button/bed.png"
+import { Outlet, useLocation } from "react-router-dom"
 import Adot from "../../assets/img/img.png"
 import AdotChat from "../../components/common/AdotChat.jsx"
-import Button from "../../components/main/Button.jsx"
+import RecommendButton from "../../components/home/RecommendButton.jsx"
+import SelectFurnitureTypeButtons from "../../components/home/SelectFurnitureTypeButtons.jsx"
+import UploadButtons from "../../components/home/UploadButtons.jsx"
 
 const Home = () => {
     const [step, setStep] = useState(0)
-
+    const [type, setType] = useState(0)
+    const location = useLocation()
     return (
         <>
             <div className="py-4 select-none">
                 <AdotChat>
-                    안녕하세요. SKT FLY AI 내일의 집의 에이닷입니다.
+                    {step === 0 &&
+                        "안녕하세요.SKT FLY AI 내일의 집의 에이닷입니다."}
+                    {step === 1 && "어떤 가구를 추천해드릴까요?"}
+                    {step === 2 && "방 사진을 보여주시겠어요?"}
                 </AdotChat>
             </div>
             <div className="flex-1 ">
                 <img
                     src={Adot}
                     className="transition duration-300 scale-100 mx-auto"
+                    alt="adot"
                     // style={{ height: "auto" }}
                 />
             </div>
-            <div className="py-2.5">
-                <div className="px-5 flex justify-start gap-2 overflow-x-scroll scrollbar-hide">
-                    {step === 0 && (
-                        <Button
-                            icon={bed}
-                            onClick={() => {
-                                setStep(1)
-                            }}
-                        >
-                            가구 추천해줘
-                        </Button>
-                    )}
-                    {step === 1 && (
-                        <>
-                            <Button
-                                icon={bed}
-                                onClick={() => {
-                                    setStep(2)
-                                }}
-                            >
-                                에이닷이 추천해줘
-                            </Button>
-                            <Button
-                                icon={bed}
-                                onClick={() => {
-                                    setStep(2)
-                                }}
-                            >
-                                침대
-                            </Button>
-                            <Button
-                                icon={bed}
-                                onClick={() => {
-                                    setStep(2)
-                                }}
-                            >
-                                책장
-                            </Button>
-                        </>
-                    )}
-                    {step === 2 && (
-                        <>
-                            <Button
-                                icon={bed}
-                                onClick={() => {
-                                    setStep(1)
-                                }}
-                            >
-                                지금 사진 찍기
-                            </Button>
-                            <Button
-                                icon={bed}
-                                onClick={() => {
-                                    setStep(1)
-                                }}
-                            >
-                                앨범에서 고르기
-                            </Button>
-                        </>
-                    )}
-                </div>
+            <div className="absolute bottom-32 w-full">
+                {location.pathname === "/" && (
+                    <div className="flex justify-center">
+                        {step === 0 && (
+                            <RecommendButton next={() => setStep(1)} />
+                        )}
+                        {step === 1 && (
+                            <SelectFurnitureTypeButtons
+                                next={() => setStep(2)}
+                                setType={setType}
+                            />
+                        )}
+                        {step === 2 && <UploadButtons type={type} />}
+                    </div>
+                )}
+                <Outlet />
             </div>
         </>
     )
