@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom"
 import App from "../App.jsx"
-import Analysis from "../components/layout/Analysis.jsx"
 import AnalysisSummary from "../components/layout/AnalysisSummary.jsx"
 import AnalysisPage from "../pages/analysis/index.jsx"
 import FurniturePage from "../pages/furniture/index.jsx"
@@ -15,20 +14,16 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-            },
-            {
-                path: "analysis",
-                element: <AnalysisPage />,
                 children: [
                     {
-                        path: "",
+                        path: "summary",
                         element: <AnalysisSummary />,
                     },
-                    {
-                        path: "detail",
-                        element: <Analysis />,
-                    },
                 ],
+            },
+            {
+                path: "/analysis",
+                element: <AnalysisPage />,
             },
             {
                 path: "/recommend",
@@ -44,6 +39,7 @@ const router = createBrowserRouter([
 
 const routes = {
     home: "/",
+    summary: "/summary",
     analysis: "/analysis",
     furniture: "/furniture",
     recommend: "/recommend",
