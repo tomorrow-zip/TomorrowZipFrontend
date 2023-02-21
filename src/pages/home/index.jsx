@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Outlet, useLocation } from "react-router-dom"
+import { test } from "../../api/index.js"
 import Adot from "../../assets/img/img.png"
 import AdotChat from "../../components/common/AdotChat.jsx"
 
@@ -25,6 +26,7 @@ const Home = () => {
                         ? "h-[calc(100vh-30rem)]"
                         : "h-[calc(100vh-22rem)]"
                 }`}
+                onClick={test}
             >
                 <img src={Adot} className="mx-auto max-h-full" alt="adot" />
             </div>
