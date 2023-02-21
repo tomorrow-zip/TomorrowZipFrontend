@@ -42,5 +42,6 @@
         "tailwindcss": "^3.2.4",
         "vite": "^4.0.0"
     },
-    "homepage": "https://tomorrowzip.netlify.app"
+    "homepage": "https://tomorrowzip.netlify.app",
+    "proxy": "http://35.216.58.5/"
 }
