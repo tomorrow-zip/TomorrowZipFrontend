@@ -17,6 +17,9 @@ module.exports = {
       },
       animation: {
         'loading': 'spin 1.5s linear infinite',
+      },
+      height: {
+        'h': '-webkit-fill-available'
       }
     },
   },

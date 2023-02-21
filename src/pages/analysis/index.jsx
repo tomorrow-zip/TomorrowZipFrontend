@@ -4,7 +4,7 @@ import Analysis from "../../components/layout/Analysis.jsx"
 const AnalysisPage = () => {
     return (
         <>
-            <div className="py-4 select-none">
+            <div className="py-4 select-none h-28 flex flex-col justify-center">
                 <AdotChat>
                     안녕하세요. SKT FLY AI 내일의 집의 에이닷입니다.
                 </AdotChat>

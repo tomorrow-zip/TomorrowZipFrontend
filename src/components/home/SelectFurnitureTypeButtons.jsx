@@ -1,7 +1,11 @@
+import { useAtomValue, useSetAtom } from "jotai"
+import { useNavigate } from "react-router-dom"
 import adotIcon from "../../assets/icon/button/furnitures/adot.png"
 import bedIcon from "../../assets/icon/button/furnitures/bed.png"
 import closetIcon from "../../assets/icon/button/furnitures/closet.png"
 import sofaIcon from "../../assets/icon/button/furnitures/sofa.png"
+import { furnitureTypeAtom } from "../../atoms/index.js"
+import { routes } from "../../router/router.jsx"
 import Button from "./Button.jsx"
 
 const furnitures = [
@@ -26,16 +30,20 @@ const furnitures = [
         icon: closetIcon,
     },
 ]
-const SelectFurnitureTypeButtons = ({ next, setType }) => {
+const SelectFurnitureTypeButtons = () => {
+    const navigate = useNavigate()
+    const furnitureType = useAtomValue(furnitureTypeAtom)
+    const setFurnitureType = useSetAtom(furnitureTypeAtom)
     return (
-        <div className="px-5 flex justify-start gap-2 overflow-x-scroll scrollbar-hide">
+        <div className="max-w-full px-5 flex justify-start gap-2 overflow-x-scroll scrollbar-hide">
             {furnitures.map((furniture) => {
                 return (
                     <Button
                         icon={furniture.icon}
                         onClick={() => {
-                            setType(furniture.id)
-                            next()
+                            setFurnitureType(furniture.id)
+                            // console.log(furnitureType)
+                            navigate(routes.step3)
                         }}
                         key={furniture.text + furniture.id}
                     >

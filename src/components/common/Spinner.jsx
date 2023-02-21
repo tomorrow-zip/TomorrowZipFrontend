@@ -1,3 +1,6 @@
+import { useAtomValue } from "jotai"
+import { loadingAtom } from "../../atoms/index.js"
+
 const SvgSpinner = (props) => (
     <svg
         width={44}
@@ -13,10 +16,12 @@ const SvgSpinner = (props) => (
     </svg>
 )
 
-const Spinner = ({ loading }) => {
+const Spinner = () => {
+    const loading = useAtomValue(loadingAtom)
+
     return (
         <div
-            className={`absolute top-0 left-0 h-full min-h-screen w-full z-10 transition duration-300 select-none ${
+            className={`fixed top-0 left-0 h-full min-h-screen w-full z-10 transition duration-300 select-none ${
                 !loading && "hidden"
             }`}
         >

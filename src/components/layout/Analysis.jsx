@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom"
 import ExampleImg from "../../assets/img/example.jpeg"
+import { routes } from "../../router/router.jsx"
 import ListContainer from "../common/ListContainer.jsx"
 
 const ChevronIcon = (props) => (
@@ -26,7 +28,7 @@ const Analysis = () => {
                 <div className="px-5 py-4">
                     <img
                         src={ExampleImg}
-                        className="aspect-square object-center object-cover rounded-lg"
+                        className="w-full object-center object-cover rounded-lg"
                         alt="example"
                     />
                     <div className="mt-4">
@@ -80,10 +82,14 @@ const Analysis = () => {
                 </div>
             </ListContainer>
             <ListContainer>
-                <button className="w-full px-5 py-3 text-center flex justify-center items-center gap-2.5">
-                    <span className="text-sm">AI가 추천하는 가구 살펴보기</span>
-                    <ChevronIcon />
-                </button>
+                <Link to={routes.recommend}>
+                    <button className="w-full px-5 py-3 text-center flex justify-center items-center gap-2.5">
+                        <span className="text-sm">
+                            AI가 추천하는 가구 살펴보기
+                        </span>
+                        <ChevronIcon />
+                    </button>
+                </Link>
             </ListContainer>
         </div>
     )

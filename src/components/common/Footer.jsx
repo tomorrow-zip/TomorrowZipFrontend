@@ -83,18 +83,21 @@ const Footer = () => {
     return (
         <footer className="absolute bottom-0 w-full flex justify-between items-center px-5 pt-3 pb-10 bg-gradient-to-t [background:linear-gradient(to_bottom,transparent_0%,white_20%)]">
             <div className="w-10 h-10">
-                {route.pathname !== "/" && route.pathname !== "/analysis" && (
-                    <button
-                        className="w-10 h-10 flex justify-center items-center"
-                        onClick={() => {
-                            navigate(-1)
-                        }}
-                    >
-                        <div className="w-8 h-8 z-10 flex justify-center items-center">
-                            <Back />
-                        </div>
-                    </button>
-                )}
+                {route.pathname !== routes.step1 &&
+                    route.pathname !== routes.step2 &&
+                    route.pathname !== routes.step3 &&
+                    route.pathname !== "/analysis" && (
+                        <button
+                            className="w-10 h-10 flex justify-center items-center"
+                            onClick={() => {
+                                navigate(-1)
+                            }}
+                        >
+                            <div className="w-8 h-8 z-10 flex justify-center items-center">
+                                <Back />
+                            </div>
+                        </button>
+                    )}
             </div>
             <div className="flex-1 flex justify-center items-center">
                 <div className="flex gap-6 justify-evenly rounded-full px-4 py-3 bg-white drop-shadow-[0_0_1.5rem_rgba(0,0,0,0.2)] relative">

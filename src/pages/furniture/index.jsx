@@ -7,7 +7,7 @@ const images = [ClockImage, ClockImage, ClockImage, ClockImage]
 const FurniturePage = () => {
     return (
         <>
-            <div className="py-4 select-none">
+            <div className="py-4 select-none h-28 flex flex-col justify-center">
                 <AdotChat>이런 가구를 추천해요!</AdotChat>
             </div>
             <div className="flex-1 "></div>

@@ -1,5 +1,8 @@
-import { createBrowserRouter } from "react-router-dom"
+import { Navigate, createBrowserRouter, redirect } from "react-router-dom"
 import App from "../App.jsx"
+import RecommendButton from "../components/home/RecommendButton.jsx"
+import SelectFurnitureTypeButtons from "../components/home/SelectFurnitureTypeButtons.jsx"
+import UploadButtons from "../components/home/UploadButtons.jsx"
 import AnalysisSummary from "../components/layout/AnalysisSummary.jsx"
 import AnalysisPage from "../pages/analysis/index.jsx"
 import FurniturePage from "../pages/furniture/index.jsx"
@@ -15,6 +18,22 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home />,
                 children: [
+                    {
+                        path: "",
+                        element: <Navigate to="step1" />,
+                    },
+                    {
+                        path: "step1",
+                        element: <RecommendButton />,
+                    },
+                    {
+                        path: "step2",
+                        element: <SelectFurnitureTypeButtons />,
+                    },
+                    {
+                        path: "step3",
+                        element: <UploadButtons />,
+                    },
                     {
                         path: "summary",
                         element: <AnalysisSummary />,
@@ -39,6 +58,9 @@ const router = createBrowserRouter([
 
 const routes = {
     home: "/",
+    step1: "/step1",
+    step2: "/step2",
+    step3: "/step3",
     summary: "/summary",
     analysis: "/analysis",
     furniture: "/furniture",
