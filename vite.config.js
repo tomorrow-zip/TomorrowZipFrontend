@@ -3,7 +3,6 @@ import { defineConfig } from "vite"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
     server: {
         proxy: {
             "/test": {
@@ -12,6 +11,13 @@ export default defineConfig({
                 secure: false,
                 rewrite: (path) => path.replace(/^\/test/, ""),
             },
+            "/api": {
+                target: "http://35.216.58.5/",
+                changeOrigin: true,
+                secure: false,
+                rewrite: (path) => path.replace(/^\/api/, "api"),
+            },
         },
     },
+    plugins: [react()],
 })
