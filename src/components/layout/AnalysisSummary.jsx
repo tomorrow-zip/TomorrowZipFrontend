@@ -1,5 +1,9 @@
+import { useEffect } from "react"
+import { useAtom } from "jotai"
 import { Link } from "react-router-dom"
+import { getImages } from "../../api/index.js"
 import ExampleImg from "../../assets/img/example.jpeg"
+import { analysisAtom } from "../../atoms/index.js"
 import ListContainer from "../common/ListContainer.jsx"
 
 const ChevronIcon = (props) => (
@@ -21,8 +25,22 @@ const ChevronIcon = (props) => (
 )
 
 const AnalysisSummary = () => {
+    const [analysis, setAnalysis] = useAtom(analysisAtom)
+    const onLoad = async () => {
+        try {
+            const response = await getImages(1)
+            console.log(response.data.result)
+            setAnalysis(response.data.result)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        onLoad()
+    }, [onLoad])
     return (
-        <div className=" w-screen">
+        <div className=" w-screen" onClick={onLoad}>
             <ListContainer className="mx-4">
                 <div className="flex justify-between items-center gap-2 px-5 py-4">
                     <div>
@@ -31,17 +49,27 @@ const AnalysisSummary = () => {
                         </h3>
                         <div className="text-text-gray text-sm">
                             <div>사진을 바탕으로 집을 분석해봤어요!</div>
-                            <div>
-                                <span className="font-bold">아늑함</span> 78.8%
-                            </div>
-                            <div>
-                                <span className="font-bold">모던 인테리어</span>{" "}
-                                91.2%
-                            </div>
-                            <div>
-                                <span className="font-bold">베이지 톤</span>{" "}
-                                65.3%
-                            </div>
+                            {/*<div>*/}
+                            {/*    <span className="font-bold">아늑함</span> 78.8%*/}
+                            {/*</div>*/}
+                            {/*<div>*/}
+                            {/*    <span className="font-bold">모던 인테리어</span>{" "}*/}
+                            {/*    91.2%*/}
+                            {/*</div>*/}
+                            {/*<div>*/}
+                            {/*    <span className="font-bold">베이지 톤</span>{" "}*/}
+                            {/*    65.3%*/}
+                            {/*</div>*/}
+                            {analysis.style.map((style, idx) => {
+                                return (
+                                    <div key={style.label + idx}>
+                                        <span className="font-bold">
+                                            {style.label}
+                                        </span>{" "}
+                                        {style.probability * 100}%
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                     <img

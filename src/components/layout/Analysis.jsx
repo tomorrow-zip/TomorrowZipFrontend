@@ -1,5 +1,7 @@
+import { useAtom } from "jotai/react"
 import { Link } from "react-router-dom"
 import ExampleImg from "../../assets/img/example.jpeg"
+import { analysisAtom } from "../../atoms/index.js"
 import { routes } from "../../router/router.jsx"
 import ListContainer from "../common/ListContainer.jsx"
 
@@ -22,13 +24,15 @@ const ChevronIcon = (props) => (
 )
 
 const Analysis = () => {
+    const [analysis, setAnalysis] = useAtom(analysisAtom)
+
     return (
-        <div className="flex flex-col justify-between gap-2 mx-4">
+        <div className="flex flex-col justify-between gap-2 mx-4 pt-8">
             <ListContainer>
                 <div className="px-5 py-4">
                     <img
                         src={ExampleImg}
-                        className="w-full object-center object-cover rounded-lg"
+                        className="aspect-square w-full object-center object-cover rounded-lg"
                         alt="example"
                     />
                     <div className="mt-4">
@@ -37,17 +41,16 @@ const Analysis = () => {
                         </h3>
                         <div className="text-text-gray text-sm">
                             <div>사진을 바탕으로 집을 분석해봤어요!</div>
-                            <div>
-                                <span className="font-bold">아늑함</span> 78.8%
-                            </div>
-                            <div>
-                                <span className="font-bold">모던 인테리어</span>{" "}
-                                91.2%
-                            </div>
-                            <div>
-                                <span className="font-bold">베이지 톤</span>{" "}
-                                65.3%
-                            </div>
+                            {analysis.style.map((style, idx) => {
+                                return (
+                                    <div key={style.label + idx}>
+                                        <span className="font-bold">
+                                            {style.label}
+                                        </span>{" "}
+                                        {style.probability * 100}%
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
@@ -58,26 +61,17 @@ const Analysis = () => {
                         이런 가구들이 발견되었어요.
                     </h3>
                     <div className="grid grid-cols-4 gap-2">
-                        <img
-                            src={ExampleImg}
-                            className="aspect-square object-center object-cover rounded-lg"
-                            alt="example"
-                        />
-                        <img
-                            src={ExampleImg}
-                            className="aspect-square object-center object-cover rounded-lg"
-                            alt="example"
-                        />
-                        <img
-                            src={ExampleImg}
-                            className="aspect-square object-center object-cover rounded-lg"
-                            alt="example"
-                        />
-                        <img
-                            src={ExampleImg}
-                            className="aspect-square object-center object-cover rounded-lg"
-                            alt="example"
-                        />
+                        {analysis.detect.map((object, idx) => {
+                            return (
+                                <div key={`detection${object.idx}`}>
+                                    <img
+                                        src={object.img_path}
+                                        className="aspect-square w-full object-center object-cover rounded-lg border border-red-500"
+                                        alt="example"
+                                    />
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </ListContainer>

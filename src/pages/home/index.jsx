@@ -6,6 +6,10 @@ import AdotChat from "../../components/common/AdotChat.jsx"
 
 const Home = () => {
     const location = useLocation()
+    const onTest = async () => {
+        const response = await test()
+        console.log(response.data)
+    }
     return (
         <>
             <div className="py-4 select-none h-28 flex flex-col justify-center">
@@ -16,7 +20,7 @@ const Home = () => {
                         "어떤 가구를 추천해드릴까요?"}
                     {location.pathname === "/step3" &&
                         "방 사진을 보여주시겠어요?"}
-                    {location.pathname === "/summary" && "멋잇는 방인데요?"}
+                    {location.pathname === "/summary" && "멋있는 방인데요?"}
                 </AdotChat>
             </div>
 
@@ -26,7 +30,7 @@ const Home = () => {
                         ? "h-[calc(100vh-30rem)]"
                         : "h-[calc(100vh-22rem)]"
                 }`}
-                onClick={test}
+                onClick={onTest}
             >
                 <img src={Adot} className="mx-auto max-h-full" alt="adot" />
             </div>

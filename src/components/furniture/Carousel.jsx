@@ -1,8 +1,12 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const Carousel = ({ images }) => {
     const scroll = useRef(null)
     const [current, setCurrent] = useState(0)
+
+    useEffect(() => {
+        setCurrent(0)
+    }, [])
 
     return (
         <div>

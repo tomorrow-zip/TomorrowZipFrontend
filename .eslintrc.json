@@ -16,7 +16,7 @@
         "no-var": "error",
         "no-unused-vars": "off",
         "no-undef": "off",
-        "no-console": "warn",
+        "no-console": "off",
         "no-case-declarations": "off",
         "curly": ["warn", "multi-line", "consistent"],
         "eqeqeq": "error",

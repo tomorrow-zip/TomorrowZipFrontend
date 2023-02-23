@@ -1,5 +1,7 @@
+import axios from "axios"
 import { useSetAtom } from "jotai"
 import { useNavigate } from "react-router-dom"
+import { postImages } from "../../api/index.js"
 import albumIcon from "../../assets/icon/button/camera/album.png"
 import cameraIcon from "../../assets/icon/button/camera/camera.png"
 import { loadingAtom } from "../../atoms/index.js"
@@ -23,6 +25,24 @@ const UploadButtons = () => {
         // console.log(data)
         navigate("/summary", data)
     }
+
+    const onUpload = async (e) => {
+        setLoading(true)
+        const img = e.target.files[0]
+        const formData = new FormData()
+        formData.append("file", img)
+        const response = postImages(formData)
+        console.log(response)
+    }
+
+    const onChange = (e) => {
+        const img = e.target.files[0]
+        const formData = new FormData()
+        formData.append("img", img)
+        console.log(formData) // FormData {}
+        for (const keyValue of formData) console.log(keyValue) // ["img", File] File은 객체
+    }
+
     return (
         <div className="px-5 flex justify-start gap-2 overflow-x-scroll scrollbar-hide max-w-full">
             <label
@@ -62,7 +82,7 @@ const UploadButtons = () => {
                     type="file"
                     accept="image/png,image/jpeg,image/jpg"
                     className="hidden"
-                    onChange={upload}
+                    onChange={onUpload}
                 />
             </label>
         </div>

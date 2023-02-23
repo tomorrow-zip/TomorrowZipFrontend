@@ -1,5 +1,5 @@
 import { useAtomValue, useSetAtom } from "jotai"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import adotIcon from "../../assets/icon/button/furnitures/adot.png"
 import bedIcon from "../../assets/icon/button/furnitures/bed.png"
 import closetIcon from "../../assets/icon/button/furnitures/closet.png"
@@ -31,24 +31,23 @@ const furnitures = [
     },
 ]
 const SelectFurnitureTypeButtons = () => {
-    const navigate = useNavigate()
-    const furnitureType = useAtomValue(furnitureTypeAtom)
     const setFurnitureType = useSetAtom(furnitureTypeAtom)
     return (
         <div className="max-w-full px-5 flex justify-start gap-2 overflow-x-scroll scrollbar-hide">
             {furnitures.map((furniture) => {
                 return (
-                    <Button
-                        icon={furniture.icon}
-                        onClick={() => {
-                            setFurnitureType(furniture.id)
-                            // console.log(furnitureType)
-                            navigate(routes.step3)
-                        }}
-                        key={furniture.text + furniture.id}
-                    >
-                        {furniture.text}
-                    </Button>
+                    // eslint-disable-next-line react/jsx-key
+                    <Link to={routes.step3} key={furniture.text + furniture.id}>
+                        <Button
+                            icon={furniture.icon}
+                            onClick={() => {
+                                setFurnitureType(furniture.id)
+                                // console.log(furnitureType)
+                            }}
+                        >
+                            {furniture.text}
+                        </Button>
+                    </Link>
                 )
             })}
         </div>

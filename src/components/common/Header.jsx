@@ -61,7 +61,7 @@ const ShareIcon = (props) => (
 )
 const Header = () => {
     return (
-        <header className="absolute top-0 w-full px-[1.125rem] py-4 flex justify-between">
+        <header className="absolute top-0 w-full px-[1.125rem] py-4 flex justify-between bg-gradient-to-b [background:linear-gradient(to_top,transparent_0%,white_20%)] z-20">
             <button className="w-6 h-6 flex justify-center items-center rounded">
                 <div className="w-6 h-6 z-10 flex justify-center items-center">
                     <MenuIcon />

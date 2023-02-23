@@ -16,12 +16,12 @@ api.defaults.withCredentials = true
 //     }
 // )
 
-const test = () => {
-    const response = api.get("/test", {
-        withCredentials: true, // 쿠키 cors 통신 설정
-    })
-    console.log(response)
-    return response
-}
+export const test = () => api.get("/test")
 
-export { api, test }
+export const getImages = (uuid) => api.get(`/api/images/${uuid}`)
+
+export const postImages = (image) => api.post(`api/images`, image)
+
+export const getProduct = (productIdx) => api.get(`/api/products/${productIdx}`)
+
+export { api }

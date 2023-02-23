@@ -34,20 +34,23 @@ const ChevronRightIcon = (props) => (
         />
     </svg>
 )
-const RecommendDetail = () => {
+const RecommendDetail = ({ product }) => {
     return (
         <div className="flex flex-col gap-2 mx-4">
             <ListContainer>
-                <div className="p-3">
-                    <h3 className="font-bold mb-1">플랫우드 무소음 벽시계</h3>
+                <div className="px-4 py-3">
+                    <h3 className="font-bold mb-1">{product.productName}</h3>
                     <div className="text-text-gray text-sm">
-                        <div>무아스</div>
-                        <div>₩12,500</div>
+                        <div>{product.brand}</div>
+                        <div>₩{product.productPrice.toLocaleString()}</div>
                     </div>
                 </div>
             </ListContainer>
             <ListContainer>
-                <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
+                <a
+                    href={product.productUrl}
+                    className="flex justify-between items-center gap-2 pl-4 pr-3 py-3 block"
+                >
                     <div>
                         <h3 className="font-bold mb-1">구매하러 가기</h3>
                         <div className="text-text-gray text-sm">이케아</div>
@@ -55,18 +58,26 @@ const RecommendDetail = () => {
                     <div className="text-[#787A88]">
                         <ChevronRightIcon />
                     </div>
-                </div>
+                </a>
             </ListContainer>
             <ListContainer>
                 <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
                     <div>
-                        <h3 className="font-bold mb-1">AR로 배치해보기</h3>
+                        <h3 className="font-bold mb-1">3D로 배치해보기</h3>
                         <div className="text-text-gray text-sm">
-                            AR을 통해서 집에 어울리는지 확인해볼까요?
+                            3D를 통해서 집에 어울리는지 확인해볼까요?
                         </div>
                     </div>
                     <div className="rounded-full bg-[#D7D9DC] p-2 text-[#787A88]">
                         <ARIcon />
+                    </div>
+                </div>
+            </ListContainer>
+            <ListContainer>
+                <div className="px-4 py-3">
+                    <h3 className="font-bold mb-1">상품 설명</h3>
+                    <div className="text-text-gray text-sm">
+                        {product.productDescrip}
                     </div>
                 </div>
             </ListContainer>
