@@ -49,7 +49,7 @@ const router = createBrowserRouter([
                 element: <RecommendPage />,
             },
             {
-                path: "/furniture",
+                path: "/furniture/:furniture_idx",
                 element: <FurniturePage />,
             },
         ],
