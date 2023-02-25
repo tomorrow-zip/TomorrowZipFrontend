@@ -29,7 +29,7 @@ const Carousel = ({ images }) => {
                 })}
             </div>
             <div className="flex gap-1.5 py-1 justify-center">
-                {images.map((image, idx) => {
+                {images?.map((image, idx) => {
                     const offset = 4 + idx * 168
                     return (
                         <button

@@ -1,7 +1,7 @@
-import { useAtom } from "jotai/react"
+import { useAtomValue } from "jotai"
 import { Link } from "react-router-dom"
-import ExampleImg from "../../assets/img/example.jpeg"
-import { analysisAtom } from "../../atoms/index.js"
+// import ExampleImg from "../../assets/img/example.jpeg"
+import { analysisAtom, imageAtom } from "../../atoms/index.js"
 import { routes } from "../../router/router.jsx"
 import ListContainer from "../common/ListContainer.jsx"
 
@@ -24,14 +24,14 @@ const ChevronIcon = (props) => (
 )
 
 const Analysis = () => {
-    const [analysis, setAnalysis] = useAtom(analysisAtom)
-
+    const analysis = useAtomValue(analysisAtom)
+    const image = useAtomValue(imageAtom)
     return (
         <div className="flex flex-col justify-between gap-2 mx-4 pt-8">
             <ListContainer>
                 <div className="px-5 py-4">
                     <img
-                        src={ExampleImg}
+                        src={image.path}
                         className="aspect-square w-full object-center object-cover rounded-lg"
                         alt="example"
                     />
@@ -41,6 +41,9 @@ const Analysis = () => {
                         </h3>
                         <div className="text-text-gray text-sm">
                             <div>사진을 바탕으로 집을 분석해봤어요!</div>
+                            {analysis.length === 0 && (
+                                <div className="">발견된 가구가 없습니다.</div>
+                            )}
                             {analysis.style.map((style, idx) => {
                                 return (
                                     <div key={style.label + idx}>
@@ -61,7 +64,12 @@ const Analysis = () => {
                         이런 가구들이 발견되었어요.
                     </h3>
                     <div className="grid grid-cols-4 gap-2">
-                        {analysis.detect.map((object, idx) => {
+                        {analysis.length === 0 && (
+                            <div className="col-span-4">
+                                발견된 가구가 없습니다.
+                            </div>
+                        )}
+                        {analysis.detect.map((object) => {
                             return (
                                 <div key={`detection${object.idx}`}>
                                     <img

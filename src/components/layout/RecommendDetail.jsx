@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import ListContainer from "../common/ListContainer.jsx"
 const ARIcon = (props) => (
     <svg
@@ -42,7 +43,7 @@ const RecommendDetail = ({ product }) => {
                     <h3 className="font-bold mb-1">{product.productName}</h3>
                     <div className="text-text-gray text-sm">
                         <div>{product.brand}</div>
-                        <div>₩{product.productPrice.toLocaleString()}</div>
+                        <div>₩{product?.productPrice?.toLocaleString()}</div>
                     </div>
                 </div>
             </ListContainer>
@@ -60,19 +61,22 @@ const RecommendDetail = ({ product }) => {
                     </div>
                 </a>
             </ListContainer>
-            <ListContainer>
-                <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
-                    <div>
-                        <h3 className="font-bold mb-1">3D로 배치해보기</h3>
-                        <div className="text-text-gray text-sm">
-                            3D를 통해서 집에 어울리는지 확인해볼까요?
+            <Link to={"/3d"}>
+                <ListContainer>
+                    <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
+                        <div>
+                            <h3 className="font-bold mb-1">3D로 배치해보기</h3>
+                            <div className="text-text-gray text-sm">
+                                3D를 통해서 집에 어울리는지 확인해볼까요?
+                            </div>
+                        </div>
+
+                        <div className="rounded-full bg-[#D7D9DC] p-2 text-[#787A88]">
+                            <ARIcon />
                         </div>
                     </div>
-                    <div className="rounded-full bg-[#D7D9DC] p-2 text-[#787A88]">
-                        <ARIcon />
-                    </div>
-                </div>
-            </ListContainer>
+                </ListContainer>
+            </Link>
             <ListContainer>
                 <div className="px-4 py-3">
                     <h3 className="font-bold mb-1">상품 설명</h3>

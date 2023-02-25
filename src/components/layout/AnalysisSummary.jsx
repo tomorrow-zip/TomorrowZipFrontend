@@ -1,9 +1,9 @@
 import { useEffect } from "react"
-import { useAtom } from "jotai"
+import { useAtom, useAtomValue } from "jotai"
 import { Link } from "react-router-dom"
 import { getImages } from "../../api/index.js"
-import ExampleImg from "../../assets/img/example.jpeg"
-import { analysisAtom } from "../../atoms/index.js"
+// import ExampleImg from "../../assets/img/example.jpeg"
+import { analysisAtom, imageAtom } from "../../atoms/index.js"
 import ListContainer from "../common/ListContainer.jsx"
 
 const ChevronIcon = (props) => (
@@ -26,9 +26,11 @@ const ChevronIcon = (props) => (
 
 const AnalysisSummary = () => {
     const [analysis, setAnalysis] = useAtom(analysisAtom)
+    // const uuid = useAtomValue(uuidAtom)
+    const image = useAtomValue(imageAtom)
     const onLoad = async () => {
         try {
-            const response = await getImages(1)
+            const response = await getImages(image.uuid)
             console.log(response.data.result)
             setAnalysis(response.data.result)
         } catch (e) {
@@ -38,7 +40,7 @@ const AnalysisSummary = () => {
 
     useEffect(() => {
         onLoad()
-    }, [onLoad])
+    })
     return (
         <div className=" w-screen" onClick={onLoad}>
             <ListContainer className="mx-4">
@@ -73,7 +75,7 @@ const AnalysisSummary = () => {
                         </div>
                     </div>
                     <img
-                        src={ExampleImg}
+                        src={image.path}
                         className="w-28 h-28 object-center object-cover rounded-lg"
                         alt="example"
                     />

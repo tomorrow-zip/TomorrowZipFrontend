@@ -1,10 +1,9 @@
-import axios from "axios"
 import { useSetAtom } from "jotai"
 import { useNavigate } from "react-router-dom"
 import { postImages } from "../../api/index.js"
 import albumIcon from "../../assets/icon/button/camera/album.png"
 import cameraIcon from "../../assets/icon/button/camera/camera.png"
-import { loadingAtom } from "../../atoms/index.js"
+import { imageAtom, loadingAtom } from "../../atoms/index.js"
 
 // const uploadImage = () => {
 //     const response = 0
@@ -14,34 +13,43 @@ import { loadingAtom } from "../../atoms/index.js"
 const UploadButtons = () => {
     const navigate = useNavigate()
     const setLoading = useSetAtom(loadingAtom)
+    const setImage = useSetAtom(imageAtom)
     const wait = () => new Promise((resolve) => setTimeout(resolve, 1000))
 
     const upload = async () => {
         setLoading(true)
-        let data = ""
+        // let data = ""
         await wait()
-        data = "data"
+        // data = "data"
         setLoading(false)
         // console.log(data)
-        navigate("/summary", data)
+        navigate("/summary")
     }
 
     const onUpload = async (e) => {
         setLoading(true)
         const img = e.target.files[0]
+        console.log(img)
         const formData = new FormData()
         formData.append("file", img)
-        const response = postImages(formData)
+        const response = await postImages(formData)
         console.log(response)
+        // setUuid(response.data.result.imageUuid)
+        setImage({
+            uuid: response.data.result.imageUuid,
+            path: response.data.result.filePath,
+        })
+        setLoading(false)
+        navigate("/summary")
     }
-
-    const onChange = (e) => {
-        const img = e.target.files[0]
-        const formData = new FormData()
-        formData.append("img", img)
-        console.log(formData) // FormData {}
-        for (const keyValue of formData) console.log(keyValue) // ["img", File] File은 객체
-    }
+    //
+    // const onChange = (e) => {
+    //     const img = e.target.files[0]
+    //     const formData = new FormData()
+    //     formData.append("img", img)
+    //     console.log(formData) // FormData {}
+    //     for (const keyValue of formData) console.log(keyValue) // ["img", File] File은 객체
+    // }
 
     return (
         <div className="px-5 flex justify-start gap-2 overflow-x-scroll scrollbar-hide max-w-full">

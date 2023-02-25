@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getProduct } from "../../api/index.js"
-import ClockImage from "../../assets/img/clock.png"
+// import ClockImage from "../../assets/img/clock.png"
 import AdotChat from "../../components/common/AdotChat.jsx"
 import Carousel from "../../components/furniture/Carousel.jsx"
 import RecommendDetail from "../../components/layout/RecommendDetail.jsx"
 
-const images = [ClockImage, ClockImage, ClockImage, ClockImage]
+// const images = [ClockImage, ClockImage, ClockImage, ClockImage]
 const FurniturePage = () => {
     const productIdx = useParams()
     const [product, setProduct] = useState({
@@ -21,11 +21,11 @@ const FurniturePage = () => {
         console.log(productIdx)
         const response = await getProduct(productIdx.furniture_idx)
         console.log()
-        setProduct({ ...response.data.result })
+        setProduct({ ...response?.data?.result })
     }
     useEffect(() => {
         onLoad()
-    }, [onLoad])
+    })
     return (
         <>
             <div className="py-4 select-none h-28 flex flex-col justify-center">

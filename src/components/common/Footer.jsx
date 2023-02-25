@@ -81,7 +81,7 @@ const Footer = () => {
     const route = useLocation()
 
     return (
-        <footer className="absolute bottom-0 w-full flex justify-between items-center px-5 pt-3 pb-10 bg-gradient-to-t [background:linear-gradient(to_bottom,transparent_0%,white_20%)]">
+        <footer className="fixed bottom-0 w-full flex justify-between items-center px-5 pt-3 pb-10 bg-gradient-to-t [background:linear-gradient(to_bottom,transparent_0%,white_20%)] z-[9999]">
             <div className="w-10 h-10">
                 {route.pathname !== routes.step1 &&
                     route.pathname !== routes.step2 &&

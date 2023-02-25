@@ -9,6 +9,17 @@ const analysisAtom = atom({
     style: [],
 })
 
+// const uuidAtom = atom("")
+
+const imageAtom = atom({ uuid: "", path: "" })
+
 const loadingAtom = atom(false)
 
-export { store, furnitureTypeAtom, analysisAtom, loadingAtom }
+export {
+    store,
+    furnitureTypeAtom,
+    // uuidAtom,
+    imageAtom,
+    analysisAtom,
+    loadingAtom,
+}
