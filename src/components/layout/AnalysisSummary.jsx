@@ -62,7 +62,7 @@ const AnalysisSummary = () => {
                             {/*    <span className="font-bold">베이지 톤</span>{" "}*/}
                             {/*    65.3%*/}
                             {/*</div>*/}
-                            {analysis.style.map((style, idx) => {
+                            {analysis?.style?.map((style, idx) => {
                                 return (
                                     <div key={style.label + idx}>
                                         <span className="font-bold">
