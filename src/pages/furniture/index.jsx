@@ -25,7 +25,7 @@ const FurniturePage = () => {
     }
     useEffect(() => {
         onLoad()
-    })
+    }, [])
     return (
         <>
             <div className="py-4 select-none h-28 flex flex-col justify-center">

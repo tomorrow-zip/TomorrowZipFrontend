@@ -40,7 +40,7 @@ const AnalysisSummary = () => {
 
     useEffect(() => {
         onLoad()
-    })
+    }, [])
     return (
         <div className=" w-screen" onClick={onLoad}>
             <ListContainer className="mx-4">

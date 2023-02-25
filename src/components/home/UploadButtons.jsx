@@ -30,6 +30,7 @@ const UploadButtons = () => {
         setLoading(true)
         const img = e.target.files[0]
         console.log(img)
+        alert(img)
         const formData = new FormData()
         formData.append("file", img)
         const response = await postImages(formData)
