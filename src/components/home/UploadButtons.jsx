@@ -14,17 +14,17 @@ const UploadButtons = () => {
     const navigate = useNavigate()
     const setLoading = useSetAtom(loadingAtom)
     const setImage = useSetAtom(imageAtom)
-    const wait = () => new Promise((resolve) => setTimeout(resolve, 1000))
+    // const wait = () => new Promise((resolve) => setTimeout(resolve, 1000))
 
-    const upload = async () => {
-        setLoading(true)
-        // let data = ""
-        await wait()
-        // data = "data"
-        setLoading(false)
-        // console.log(data)
-        navigate("/summary")
-    }
+    // const upload = async () => {
+    //     setLoading(true)
+    //     // let data = ""
+    //     await wait()
+    //     // data = "data"
+    //     setLoading(false)
+    //     // console.log(data)
+    //     navigate("/summary")
+    // }
 
     const onUpload = async (e) => {
         setLoading(true)
@@ -71,7 +71,7 @@ const UploadButtons = () => {
                     accept="image/png,image/jpeg,image/jpg"
                     capture
                     className="hidden"
-                    onChange={upload}
+                    onChange={onUpload}
                 />
             </label>
             <label
