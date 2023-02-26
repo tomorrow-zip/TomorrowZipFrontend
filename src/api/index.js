@@ -1,9 +1,9 @@
 import axios from "axios"
 
-const PROXY = window.location.hostname === "localhost" ? "" : ""
+const PROXY = window.location.hostname === "localhost" ? "" : "/proxy"
 const api = axios.create()
 
-api.defaults.baseURL = "http://35.216.58.5/"
+// api.defaults.baseURL = "http://35.216.58.5/"
 api.defaults.withCredentials = true
 //
 // api.interceptors.response.use(
