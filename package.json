@@ -47,5 +47,5 @@
         "vite": "^4.0.0"
     },
     "homepage": "https://tomorrowzip.netlify.app",
-    "proxy": "http://35.216.58.5/"
+    "proxy": "https://rain-lee.shop/"
 }
