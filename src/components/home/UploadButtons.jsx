@@ -58,7 +58,6 @@ const UploadButtons = () => {
                 className="flex flex-row justify-between gap-2.5
                 bg-btn border border-border
                 rounded-full px-4 py-2.5 whitespace-nowrap cursor-pointer "
-                onClick={upload}
             >
                 <div className="w-6 h-6">
                     <img src={cameraIcon} alt="icon" />
@@ -66,14 +65,14 @@ const UploadButtons = () => {
 
                 <div className="font-medium select-none">지금 사진 찍기</div>
 
-                {/*<input*/}
-                {/*    id="camera"*/}
-                {/*    type="file"*/}
-                {/*    accept="image/png,image/jpeg,image/jpg"*/}
-                {/*    capture*/}
-                {/*    className="hidden"*/}
-                {/*    onChange={upload}*/}
-                {/*/>*/}
+                <input
+                    id="camera"
+                    type="file"
+                    accept="image/png,image/jpeg,image/jpg"
+                    capture
+                    className="hidden"
+                    onChange={upload}
+                />
             </label>
             <label
                 className="flex flex-row justify-between gap-2.5
