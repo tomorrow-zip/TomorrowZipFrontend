@@ -8,6 +8,7 @@ import AnalysisPage from "../pages/analysis/index.jsx"
 import FurniturePage from "../pages/furniture/index.jsx"
 import Home from "../pages/home/index.jsx"
 import RecommendPage from "../pages/recommend/index.jsx"
+import RenderPage from "../pages/render/RenderPage.jsx"
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
             {
                 path: "/furniture/:furniture_idx",
                 element: <FurniturePage />,
+            },
+            {
+                path: "/3d",
+                element: <RenderPage />,
             },
         ],
     },
