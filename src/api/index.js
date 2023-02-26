@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const PROXY = window.location.hostname === "localhost" ? "" : "/api"
+const PROXY = window.location.hostname === "localhost" ? "" : "/proxy"
 const api = axios.create()
 
 // api.defaults.baseURL = "http://35.216.58.5/"
@@ -17,7 +17,7 @@ api.defaults.withCredentials = true
 //     }
 // )
 
-export const test = () => api.get(`${PROXY}/test`)
+export const test = () => api.get(`${PROXY}/api/test`)
 
 export const getImages = (uuid) => api.get(`/api/images/${uuid}`)
 
