@@ -19,10 +19,11 @@ api.defaults.withCredentials = true
 
 export const test = () => api.get(`${PROXY}/test`)
 
-export const getImages = (uuid) => api.get(`/api/images/${uuid}`)
+export const getImages = (uuid) => api.get(`${PROXY}/api/images/${uuid}`)
 
-export const postImages = (image) => api.post(`api/images`, image)
+export const postImages = (image) => api.post(`${PROXY}/api/images`, image)
 
-export const getProduct = (productIdx) => api.get(`/api/products/${productIdx}`)
+export const getProduct = (productIdx) =>
+    api.get(`${PROXY}/api/products/${productIdx}`)
 
 export { api }
