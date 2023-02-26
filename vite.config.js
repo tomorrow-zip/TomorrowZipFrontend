@@ -6,13 +6,13 @@ export default defineConfig({
     server: {
         proxy: {
             "/test": {
-                target: "http://35.216.58.5/",
+                target: "https://rain-lee.shop/",
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/test/, ""),
             },
             "/api": {
-                target: "http://35.216.58.5/",
+                target: "https://rain-lee.shop/",
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/api/, "api"),
