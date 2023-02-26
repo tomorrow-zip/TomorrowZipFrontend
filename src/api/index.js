@@ -17,7 +17,7 @@ api.defaults.withCredentials = true
 //     }
 // )
 
-export const test = () => api.get(`${PROXY}/api/test`)
+export const test = () => api.get(`${PROXY}/test`)
 
 export const getImages = (uuid) => api.get(`/api/images/${uuid}`)
 
