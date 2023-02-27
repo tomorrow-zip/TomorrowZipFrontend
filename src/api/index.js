@@ -19,7 +19,8 @@ api.defaults.withCredentials = true
 
 export const test = () => api.get(`${PROXY}/test`)
 
-export const getImages = (uuid) => api.get(`${PROXY}/api/images/${uuid}`)
+export const getImages = (uuid, furnitureType) =>
+    api.get(`${PROXY}/api/images/${uuid}?type=${furnitureType}`)
 
 export const postImages = (image) => api.post(`${PROXY}/api/images`, image)
 
