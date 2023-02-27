@@ -61,7 +61,7 @@ const RecommendDetail = ({ product }) => {
                     </div>
                 </a>
             </ListContainer>
-            <Link to={"/3d"}>
+            <a href={"/3d"}>
                 <ListContainer>
                     <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
                         <div>
@@ -76,7 +76,7 @@ const RecommendDetail = ({ product }) => {
                         </div>
                     </div>
                 </ListContainer>
-            </Link>
+            </a>
             <ListContainer>
                 <div className="px-4 py-3">
                     <h3 className="font-bold mb-1">상품 설명</h3>
