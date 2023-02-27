@@ -1,5 +1,7 @@
 import { useRef, useState } from "react"
+import { useSetAtom } from "jotai"
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import { loadingAtom } from "../../atoms/index.js"
 import { routes } from "../../router/router.jsx"
 
 const MicrophoneIcon = (props) => (
@@ -79,6 +81,7 @@ const Footer = () => {
     const [input, setInput] = useState(0)
     const navigate = useNavigate()
     const route = useLocation()
+    const setLoading = useSetAtom(loadingAtom)
 
     return (
         <footer className="fixed bottom-0 w-full flex justify-between items-center px-5 pt-3 pb-10 bg-gradient-to-t [background:linear-gradient(to_bottom,transparent_0%,white_20%)] z-[9999]">
@@ -132,6 +135,7 @@ const Footer = () => {
                 <button
                     className="w-10 h-10 rounded-full bg-white drop-shadow-[0_0_1.5rem_rgba(0,0,0,0.2)] flex justify-center items-center"
                     onClick={() => {
+                        setLoading(false)
                         refreshRef.current.className += "animate-spin"
                         setTimeout(() => {
                             refreshRef.current.className = ""
