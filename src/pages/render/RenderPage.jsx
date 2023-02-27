@@ -8,10 +8,10 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader"
 import AdotChat from "../../components/common/AdotChat.jsx"
 
 const RenderPage = () => {
-    const mtlFile = useLoader(MTLLoader, "/src/assets/3dmodel/ikea-bed.mtl")
+    const mtlFile = useLoader(MTLLoader, "./assets/3dmodel/ikea-bed.mtl")
     const objectFile = useLoader(
         OBJLoader,
-        "/src/assets/3dmodel/ikea-bed.obj",
+        "/assets/3dmodel/ikea-bed.obj",
         (loader) => {
             mtlFile.preload()
             loader.setMaterials(mtlFile)
