@@ -54,7 +54,7 @@ const router = createBrowserRouter([
                 element: <FurniturePage />,
             },
             {
-                path: "/3d",
+                path: "/3d/:idx",
                 element: <RenderPage />,
             },
         ],

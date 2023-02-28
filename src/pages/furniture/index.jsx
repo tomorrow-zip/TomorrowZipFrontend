@@ -36,7 +36,10 @@ const FurniturePage = () => {
                 <div>
                     <Carousel images={product.productImgs} />
                 </div>
-                <RecommendDetail product={product} />
+                <RecommendDetail
+                    product={product}
+                    idx={productIdx.furniture_idx}
+                />
             </div>
         </>
     )

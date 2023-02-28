@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import ListContainer from "../common/ListContainer.jsx"
 const ARIcon = (props) => (
     <svg
@@ -35,7 +35,7 @@ const ChevronRightIcon = (props) => (
         />
     </svg>
 )
-const RecommendDetail = ({ product }) => {
+const RecommendDetail = ({ product, idx }) => {
     return (
         <div className="flex flex-col gap-2 mx-4">
             <ListContainer>
@@ -61,22 +61,49 @@ const RecommendDetail = ({ product }) => {
                     </div>
                 </a>
             </ListContainer>
-            <a href={"/3d"}>
-                <ListContainer>
-                    <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
-                        <div>
-                            <h3 className="font-bold mb-1">3D로 배치해보기</h3>
-                            <div className="text-text-gray text-sm">
-                                3D를 통해서 집에 어울리는지 확인해볼까요?
+            {idx >= 3 && idx < 503 ? (
+                <a href={`/3d/${idx}`}>
+                    <ListContainer>
+                        <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
+                            <div>
+                                <h3 className="font-bold mb-1">
+                                    3D로 배치해보기
+                                </h3>
+                                <div className="text-text-gray text-sm">
+                                    3D를 통해서 집에 어울리는지 확인해볼까요?
+                                </div>
+                            </div>
+
+                            <div className="rounded-full bg-[#D7D9DC] p-2 text-[#787A88]">
+                                <ARIcon />
                             </div>
                         </div>
+                    </ListContainer>
+                </a>
+            ) : (
+                <div
+                    onClick={() => {
+                        alert("아직 3d 모델이 준비되지 않은 상품입니다.")
+                    }}
+                >
+                    <ListContainer>
+                        <div className="flex justify-between items-center gap-2 pl-4 pr-3 py-3">
+                            <div>
+                                <h3 className="font-bold mb-1">
+                                    3D로 배치해보기
+                                </h3>
+                                <div className="text-text-gray text-sm">
+                                    3D를 통해서 집에 어울리는지 확인해볼까요?
+                                </div>
+                            </div>
 
-                        <div className="rounded-full bg-[#D7D9DC] p-2 text-[#787A88]">
-                            <ARIcon />
+                            <div className="rounded-full bg-[#D7D9DC] p-2 text-[#787A88]">
+                                <ARIcon />
+                            </div>
                         </div>
-                    </div>
-                </ListContainer>
-            </a>
+                    </ListContainer>
+                </div>
+            )}
             <ListContainer>
                 <div className="px-4 py-3">
                     <h3 className="font-bold mb-1">상품 설명</h3>
