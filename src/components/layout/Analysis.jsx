@@ -51,6 +51,7 @@ const Analysis = () => {
                                         Number(a.probability)
                                     )
                                 })
+                                .slice(0, 3)
                                 .map((style, idx) => {
                                     return (
                                         <div key={style.label + idx}>
