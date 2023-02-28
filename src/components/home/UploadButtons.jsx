@@ -1,4 +1,3 @@
-import loadImage from "blueimp-load-image"
 import { useSetAtom } from "jotai"
 import { useNavigate } from "react-router-dom"
 import { postImages } from "../../api/index.js"
@@ -29,19 +28,11 @@ const UploadButtons = () => {
 
     const onUpload = async (e) => {
         setLoading(true)
-        const file = e.target.files[0]
-        const formData = new FormData()
-        loadImage(
-            file,
-            function (image) {
-                const img = image
-                formData.append("file", img)
-            },
-            { orientation: true } // Options
-        )
+        const img = e.target.files[0]
         // console.log(img)
         // alert(img)
-
+        const formData = new FormData()
+        formData.append("file", img)
         const response = await postImages(formData)
         console.log(response)
         // setUuid(response.data.result.imageUuid)

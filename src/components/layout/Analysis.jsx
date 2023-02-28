@@ -87,7 +87,7 @@ const Analysis = () => {
                                 <div key={`detection${object.idx}`}>
                                     <img
                                         src={object.img_path}
-                                        className="aspect-square w-full object-center object-cover rounded-lg"
+                                        className="aspect-square w-full object-center object-cover rounded-lg bg-white"
                                         alt="example"
                                     />
                                 </div>
