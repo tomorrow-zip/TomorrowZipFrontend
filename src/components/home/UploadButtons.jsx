@@ -30,39 +30,17 @@ const UploadButtons = () => {
     const onUpload = async (e) => {
         setLoading(true)
         const file = e.target.files[0]
-        // console.log(img)
-        // alert(img)
         const formData = new FormData()
         loadImage(
             file,
-            function (img, data) {
-                // 2. 이미지 파일 데이터에 imageHead와 exif가 있는지 확인
-                if (data.imageHead && data.exif) {
-                    // 3. exif 값이 있다면 orientation 값을 1로 변경
-                    loadImage.writeExifData(
-                        data.imageHead,
-                        data,
-                        "Orientation",
-                        1
-                    )
-                    img.toBlob(function (blob) {
-                        loadImage.replaceHead(
-                            blob,
-                            data.imageHead,
-                            async function (newBlob) {
-                                newBlob.name = file.name
-                                // 4. 기존 메서드로 파일 s3에 업로드
-                                formData.append("file", newBlob)
-                            }
-                        )
-                    }, "image/jpeg")
-                } else {
-                    // exif 값 없으면 바로 s3에 업로드
-                    formData.append("file", file)
-                }
+            function (image) {
+                const img = image
+                formData.append("file", img)
             },
-            { meta: true, orientation: true, canvas: true }
+            { orientation: true } // Options
         )
+        // console.log(img)
+        // alert(img)
 
         const response = await postImages(formData)
         console.log(response)
