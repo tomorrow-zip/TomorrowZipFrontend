@@ -51,18 +51,20 @@ const Analysis = () => {
                                         Number(a.probability)
                                     )
                                 })
-                                .slice(0, 3)
+                                .slice(0, 5)
                                 .map((style, idx) => {
-                                    return (
+                                    const probability =
+                                        Math.round(style.probability * 10000) /
+                                        100
+                                    return probability > 0.05 ? (
                                         <div key={style.label + idx}>
                                             <span className="font-bold">
                                                 {style.label}
                                             </span>{" "}
-                                            {Math.round(
-                                                style.probability * 10000
-                                            ) / 100}
-                                            %
+                                            {probability}%
                                         </div>
+                                    ) : (
+                                        <div></div>
                                     )
                                 })}
                         </div>

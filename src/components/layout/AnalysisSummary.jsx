@@ -76,16 +76,18 @@ const AnalysisSummary = () => {
                                 })
                                 .slice(0, 3)
                                 .map((style, idx) => {
-                                    return (
+                                    const probability =
+                                        Math.round(style.probability * 10000) /
+                                        100
+                                    return probability > 0.05 ? (
                                         <div key={style.label + idx}>
                                             <span className="font-bold">
                                                 {style.label}
                                             </span>{" "}
-                                            {Math.round(
-                                                style.probability * 10000
-                                            ) / 100}
-                                            %
+                                            {probability}%
                                         </div>
+                                    ) : (
+                                        <div key={style.label + idx}></div>
                                     )
                                 })}
                         </div>
