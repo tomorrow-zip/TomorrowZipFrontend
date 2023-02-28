@@ -67,16 +67,27 @@ const AnalysisSummary = () => {
                             {/*    <span className="font-bold">베이지 톤</span>{" "}*/}
                             {/*    65.3%*/}
                             {/*</div>*/}
-                            {analysis?.style?.map((style, idx) => {
-                                return (
-                                    <div key={style.label + idx}>
-                                        <span className="font-bold">
-                                            {style.label}
-                                        </span>{" "}
-                                        {style.probability * 100}%
-                                    </div>
-                                )
-                            })}
+                            {analysis?.style
+                                ?.sort((a, b) => {
+                                    return (
+                                        Number(b.probability) -
+                                        Number(a.probability)
+                                    )
+                                })
+                                .slice(0, 3)
+                                .map((style, idx) => {
+                                    return (
+                                        <div key={style.label + idx}>
+                                            <span className="font-bold">
+                                                {style.label}
+                                            </span>{" "}
+                                            {Math.round(
+                                                style.probability * 10000
+                                            ) / 100}
+                                            %
+                                        </div>
+                                    )
+                                })}
                         </div>
                     </div>
                     <img

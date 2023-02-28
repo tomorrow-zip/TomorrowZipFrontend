@@ -44,16 +44,26 @@ const Analysis = () => {
                             {analysis.length === 0 && (
                                 <div className="">발견된 가구가 없습니다.</div>
                             )}
-                            {analysis.style.map((style, idx) => {
-                                return (
-                                    <div key={style.label + idx}>
-                                        <span className="font-bold">
-                                            {style.label}
-                                        </span>{" "}
-                                        {style.probability * 100}%
-                                    </div>
-                                )
-                            })}
+                            {analysis.style
+                                .sort((a, b) => {
+                                    return (
+                                        Number(b.probability) -
+                                        Number(a.probability)
+                                    )
+                                })
+                                .map((style, idx) => {
+                                    return (
+                                        <div key={style.label + idx}>
+                                            <span className="font-bold">
+                                                {style.label}
+                                            </span>{" "}
+                                            {Math.round(
+                                                style.probability * 10000
+                                            ) / 100}
+                                            %
+                                        </div>
+                                    )
+                                })}
                         </div>
                     </div>
                 </div>
@@ -74,7 +84,7 @@ const Analysis = () => {
                                 <div key={`detection${object.idx}`}>
                                     <img
                                         src={object.img_path}
-                                        className="aspect-square w-full object-center object-cover rounded-lg border border-red-500"
+                                        className="aspect-square w-full object-center object-cover rounded-lg"
                                         alt="example"
                                     />
                                 </div>
