@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useAtom, useAtomValue } from "jotai"
+import { useAtom, useAtomValue, useSetAtom } from "jotai"
 import { Link } from "react-router-dom"
 import { getImages } from "../../api/index.js"
 // import ExampleImg from "../../assets/img/example.jpeg"
@@ -7,6 +7,7 @@ import {
     analysisAtom,
     furnitureTypeAtom,
     imageAtom,
+    loadingAtom,
 } from "../../atoms/index.js"
 import ListContainer from "../common/ListContainer.jsx"
 
@@ -33,11 +34,14 @@ const AnalysisSummary = () => {
     // const uuid = useAtomValue(uuidAtom)
     const image = useAtomValue(imageAtom)
     const furnitureType = useAtomValue(furnitureTypeAtom)
+    const setLoading = useSetAtom(loadingAtom)
     const onLoad = async () => {
         try {
+            setLoading(true)
             const response = await getImages(image.uuid, furnitureType)
             console.log(response.data.result)
             setAnalysis(response.data.result)
+            setLoading(false)
         } catch (e) {
             console.error(e)
         }

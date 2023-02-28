@@ -64,7 +64,7 @@ const Analysis = () => {
                                             {probability}%
                                         </div>
                                     ) : (
-                                        <div></div>
+                                        <div key={style.label + idx}></div>
                                     )
                                 })}
                         </div>
