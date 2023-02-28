@@ -13,11 +13,11 @@ const RenderPage = () => {
     const productIdx = useParams()
     const mtlFile = useLoader(
         MTLLoader,
-        `/assets/3dmodel/${productIdx.idx}-0.mtl`
+        `/assets/3dmodel/${productIdx.idx}-0_mesh.mtl`
     )
     const objectFile = useLoader(
         OBJLoader,
-        `/assets/3dmodel/${productIdx.idx}-0.obj`,
+        `/assets/3dmodel/${productIdx.idx}-0_mesh.obj`,
         (loader) => {
             mtlFile.preload()
             loader.setMaterials(mtlFile)
