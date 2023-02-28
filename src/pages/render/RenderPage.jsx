@@ -16,7 +16,7 @@ const RenderPage = () => {
     const setLoading = useSetAtom(loadingAtom)
     const mtlFile = useLoader(
         MTLLoader,
-        `/assets/3dmodel/${productIdx.idx}.mtl`,
+        `/assets/3dmodel/${productIdx.idx}-0.mtl`,
         () => {
             setLoading(true)
         },
@@ -26,7 +26,7 @@ const RenderPage = () => {
     )
     const objectFile = useLoader(
         OBJLoader,
-        `/assets/3dmodel/${productIdx.idx}.obj`,
+        `/assets/3dmodel/${productIdx.idx}-0.obj`,
         (loader) => {
             mtlFile.preload()
             loader.setMaterials(mtlFile)
